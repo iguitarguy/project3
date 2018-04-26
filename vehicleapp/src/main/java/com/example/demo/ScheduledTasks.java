@@ -38,6 +38,7 @@ public class ScheduledTasks {
     //SQL query to create table
     //create table inventory (id int(11) not null auto_increment, makeModel varchar(30) not null, year int(4) not null, retailPrice double not null, primary key (id));
     @Timed
+    @Count
     @Scheduled(cron = "*/2 * * * * *")
     public void addVehicle() throws IOException {
         VehicleDao.create(VehicleDao.createRandomVehicle());
@@ -46,6 +47,7 @@ public class ScheduledTasks {
     }
 
     @Timed
+    @Count
     @Scheduled(cron = "*/5 * * * * *")
     public void deleteVehicle() throws IOException {
         try {
@@ -74,6 +76,7 @@ public class ScheduledTasks {
     }
 
     @Timed
+    @Count
     @Scheduled(cron = "*/7 * * * * *")
     public void updateVehicle() throws IOException {
         Vehicle tmp = VehicleDao.createRandomVehicle();
@@ -88,6 +91,7 @@ public class ScheduledTasks {
     }
 
     @Timed
+    @Count
     @Scheduled(cron = "0 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 * * * *")
     public void getLatestVehicles() throws IOException {
         try {
